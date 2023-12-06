@@ -120,16 +120,19 @@ localStorage.setItem("todos",JSON.stringify(todos));
 }
 function showAlert(type,message){
 const alert =  document.createElement("div");
-
 alert.className = `alert alert-${type}`;
 alert.textContent = message;
-firstCardBody.appendChild(alert)
-// setTimeout Metodu
+let previusAlerts = document.getElementsByClassName(alert.className);
+previusAlerts = Array.from(previusAlerts);
+if (previusAlerts.length>0){
+    previusAlerts.forEach((item)=>{
+        item.remove();
+    })
+}
+firstCardBody.appendChild(alert);
 setTimeout(function(){
    alert.remove();
 },1500);
-
-
 }
 function addTodoUI(newTodo){ // string değerini list item olarak UI'ya ekleyece
     
